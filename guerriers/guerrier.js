@@ -42,8 +42,9 @@ class Guerrier {
         <ul>
           <li>Type : ${this.type}</li>
           <li>Points de vie : ${this.pointsDeVie}</li>
-          <li>Force : ${this.force} (Force multiplié par dégât : ${this.degat})</li>
-          <li>Coût unité : ${this.cout}</li>
+          <li>Force : ${this.force}</li>
+          <li>Coût d'entrainnement : ${this.cout}</li>
+          <li>Dégâts :  ${this.degat}</li>
         </ul>
       `;
         

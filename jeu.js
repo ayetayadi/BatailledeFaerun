@@ -30,7 +30,7 @@ class Jeu {
 
     nouveauTour() {
         this.tour++;
-        console.log("------------------ Tour : " + this.tour + " ------------------");
+        console.log("Tour : " + this.tour);
 
         this.chateauBleu.setRessources(this.chateauBleu.getRessources() + 1);
         this.chateauRouge.setRessources(this.chateauRouge.getRessources() + 1);
@@ -117,14 +117,15 @@ class Jeu {
     }
 
     miseEnBataille() {
-        const infoGuerrier = document.createElement('div');
-        infoGuerrier.style.position = 'absolute';
-        infoGuerrier.style.backgroundColor = 'white';
-        infoGuerrier.style.border = '1px solid #ccc';
-        infoGuerrier.style.padding = '10px';
-        infoGuerrier.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.1)';
-        infoGuerrier.style.display = 'none';
-        infoGuerrier.style.zIndex = "1500";
+        const guerrierInfo = document.createElement('div');
+        guerrierInfo.style.backgroundColor = '#CB4001';
+        guerrierInfo.style.color="white";
+        guerrierInfo.style.position = 'absolute';
+        guerrierInfo.style.border = '1px solid #ccc';
+        guerrierInfo.style.padding = '10px';
+        guerrierInfo.style.boxShadow = '0 0 10px #272444';
+        guerrierInfo.style.display = 'none';
+        guerrierInfo.style.zIndex = "1500";
 
         const plateaux = this.plateau.getCarreaux();
         plateaux.forEach((carreau, index) => {
@@ -149,16 +150,16 @@ class Jeu {
                 img.style.height = "100px";
                 img.style.objectFit = "contain";
                 img.addEventListener('mouseover', () => {
-                    infoGuerrier.innerHTML = guerrier.afficheInfosGuerriers();
-                    infoGuerrier.style.display = 'block';
+                    guerrierInfo.innerHTML = guerrier.afficheInfosGuerriers();
+                    guerrierInfo.style.display = 'block';
                     const rect = img.getBoundingClientRect();
-                    infoGuerrier.style.top = `${rect.top + window.scrollY}px`;
-                    infoGuerrier.style.left = `${rect.right + window.scrollX + 10}px`;
-                    document.body.appendChild(infoGuerrier);
+                    guerrierInfo.style.top = `${rect.top + window.scrollY}px`;
+                    guerrierInfo.style.left = `${rect.right + window.scrollX + 10}px`;
+                    document.body.appendChild(guerrierInfo);
                 });
                 img.addEventListener('mouseout', () => {
-                    infoGuerrier.style.display = 'none';
-                    document.body.removeChild(infoGuerrier);
+                    guerrierInfo.style.display = 'none';
+                    document.body.removeChild(guerrierInfo);
                 });
 
                 const healthBar = document.createElement('div');
@@ -185,16 +186,16 @@ class Jeu {
                 img.style.height = "100px";
                 img.style.objectFit = "contain";
                 img.addEventListener('mouseover', () => {
-                    infoGuerrier.innerHTML = guerrier.afficheInfosGuerriers();
-                    infoGuerrier.style.display = 'block';
+                    guerrierInfo.innerHTML = guerrier.afficheInfosGuerriers();
+                    guerrierInfo.style.display = 'block';
                     const rect = img.getBoundingClientRect();
-                    infoGuerrier.style.top = `${rect.top + window.scrollY}px`;
-                    infoGuerrier.style.left = `${rect.right + window.scrollX + 10}px`;
-                    document.body.appendChild(infoGuerrier);
+                    guerrierInfo.style.top = `${rect.top + window.scrollY}px`;
+                    guerrierInfo.style.left = `${rect.right + window.scrollX + 10}px`;
+                    document.body.appendChild(guerrierInfo);
                 });
                 img.addEventListener('mouseout', () => {
-                    infoGuerrier.style.display = 'none';
-                    document.body.removeChild(infoGuerrier);
+                    guerrierInfo.style.display = 'none';
+                    document.body.removeChild(guerrierInfo);
                 });
 
                 const healthBar = document.createElement('div');
