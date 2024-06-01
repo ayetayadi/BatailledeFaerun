@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Bataille de Faerun</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <span id="gagner"></span>
+    <div class="button">
+        <button id="entrainerBleu" value="Train">Entrainer chateau bleu</button>
+        <button id="entrainerRouge" value="Train">Entrainer chateau rouge</button>
+    </div>
+    <ul id="guerriersBleu"></ul>
+    <ul id="guerriersRouge"></ul>
+
+    <center>
+
+        <br>
+        <button id="startGame">Commencer le jeu </button>
+        <button id="jouer">Jouer</button>
+        <br>
+        <button id="tour">Jouer un tour</button>
+        <br>
+
+    </center>
+    <div id="info"></div>
+    <div id="plateau">
+        <table class="table-fixed">
+            <th id="0">
+                <ul id="c0"></ul>
+            </th>
+            <th id="1">
+                <ul id="c1"></ul>
+            </th>
+            <th id="2">
+                <ul id="c2"></ul>
+            </th>
+            <th id="3">
+                <ul id="c3"></ul>
+            </th>
+            <th id="4">
+                <ul id="c4"></ul>
+            </th>
+        </table>
+       
+    </div>
+
+    <div class="select" id="selectDiv" style="display: none;">
+        <fieldset>
+            <div>
+                <center>
+                    <h4>Entrainez vos guerriers</h4>
+                    <div class="addUnits">
+                        <button id="addNain">Ajouter Nain (1)</button>
+                        <button id="addChefNain">Ajouter Chef Nain (3)</button>
+                        <button id="addElfe">Ajouter Elfe (2)</button>
+                        <button id="addChefElfe">Ajouter Chef Elfe (4)</button>
+                    </div>
+
+                </center>
+            </div>
+        </fieldset>
+    </div>
+
+    <script src="de.js"></script>
+    <script src="guerriers/guerrier.js"></script>
+    <script src="guerriers/nain.js"></script>
+    <script src="guerriers/chefNain.js"></script>
+    <script src="guerriers/elfe.js"></script>
+    <script src="guerriers/chefElfe.js"></script>
+    <script src="chateau.js"></script>
+    <script src="carreau.js"></script>
+    <script src="plateau.js"></script>
+    <script src="jeu.js"></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>
