@@ -51,9 +51,9 @@ class Plateau {
     
 
 
-    verifRencontreGuerrier(chBleu, chRouge) {
+    verifRencontreGuerrier(chateauBleu, chateauRouge) {
         this.carreaux.forEach(carreau => {
-            carreau.combattre(chBleu, chRouge);
+            carreau.combattre(chateauBleu, chateauRouge);
         });
     }
 

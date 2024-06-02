@@ -22,7 +22,6 @@ class Jeu {
             this.chateauRouge.deployerGuerrier();
             this.mettreAJourListe();
             this.placerGuerriers();
-            console.log("Les premières unités ont été créées ou attendent d'avoir suffisamment de ressources.");
             console.log("Plateau en début de jeu");
             this.miseEnBataille();
         }
@@ -30,7 +29,7 @@ class Jeu {
 
     nouveauTour() {
         this.tour++;
-        console.log("Tour : " + this.tour);
+        console.log("****************************Tour : " + this.tour+"******************************");
 
         this.chateauBleu.setRessources(this.chateauBleu.getRessources() + 1);
         this.chateauRouge.setRessources(this.chateauRouge.getRessources() + 1);
@@ -63,9 +62,7 @@ class Jeu {
             entrainerRougeButton.style.display = "none";
             /*listeAttenteBleuBtn.style.display = "none";
             listeAttenteRougeBtn.style.display = "none";*/
-
         }
-
         this.miseEnBataille();
     }
 
@@ -131,8 +128,6 @@ class Jeu {
         plateaux.forEach((carreau, index) => {
             const listeBleu = document.getElementById(`c${index}`);
             const listeRouge = document.getElementById(`c${index}`);
-            console.log(`c${index + 1}`, listeBleu, listeRouge);
-
             listeBleu.innerHTML = '';
             listeRouge.innerHTML = '';
 

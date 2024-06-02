@@ -5,6 +5,7 @@ var tourBtn = document.getElementById('tour');
 var jouer = document.getElementById("jouer");
 var sideSelected;
 var jeu = new Jeu();
+var jeuEnCours = false;
 
 const selectDivSection = document.getElementById('selectDiv');
 const addUnits = document.querySelector('.addUnits');
@@ -13,6 +14,7 @@ const entrainerRougeButton = document.getElementById('entrainerRouge');
 const plateau = document.getElementById('plateau');
 const startGame = document.getElementById('startGame');
 const gagner = document.getElementById("gagner");
+const consoleOutput = document.getElementById("consoleOutput");
 
 startGame.addEventListener("click", () => {
     tourBtn.style.display = "none";
@@ -23,7 +25,31 @@ startGame.addEventListener("click", () => {
 
 });
 
-jouer.addEventListener("click", () => { jeu.jouer(); })
+jouer.addEventListener("click", () => { 
+    jeu.jouer();
+    jeuEnCours = true;
+ })
+
+//Afficher les messages de console
+const originalConsoleLog = console.log;
+
+console.log = function(message) {
+    if (jeuEnCours) {
+        consoleOutput.style.border = '1px solid #ccc';
+        consoleOutput.style.padding = '10px';
+        consoleOutput.style.width = '50%';
+        consoleOutput.style.margin = '10px auto';
+        consoleOutput.style.backgroundColor = '#f0f0f0';
+        consoleOutput.style.height = '200px';
+        consoleOutput.style.overflowY = 'auto';
+
+        originalConsoleLog.apply(console, arguments);
+        const messageDiv = document.createElement('div');
+        messageDiv.textContent = message;
+        consoleOutput.appendChild(messageDiv);
+        consoleOutput.scrollTop = consoleOutput.scrollHeight;
+    }
+};
 
 tourBtn.addEventListener('click', () => { jeu.nouveauTour(); })
 
@@ -85,9 +111,6 @@ addUnits.addEventListener('click', (event) => {
 entrainerBleuButton.addEventListener('mouseover', () => {
     const chateau = jeu.getChateauBleu();
     const listeAttenteBleu = chateau.queueEntrainement;
-    console.log(listeAttenteBleu);
-
-
     const guerriersBleu = document.getElementById('guerriersBleu');
     let content = '';
     listeAttenteBleu.forEach(guerrier => {
@@ -109,8 +132,6 @@ entrainerBleuButton.addEventListener('mouseout', () => {
 entrainerRougeButton.addEventListener('mouseover', () => {
     chateau = jeu.getChateauRouge();
     listeAttenteRouge = chateau.queueEntrainement;
-    console.log(listeAttenteRouge);
-
 
     const guerriersRouge = document.getElementById('guerriersRouge');
     let content = '';

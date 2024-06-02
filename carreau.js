@@ -15,11 +15,11 @@ class Carreau {
         }
     }
     
-    combattre(chateauB, chateauR) {
+    combattre(chateauBleu, chateauRouge) {
         if (this.guerriersBleu.length !== 0 && this.guerriersRouge.length !== 0) {
             console.log("Guerrier(s) bleu sur ce carreau : " + this.guerriersBleu.length +
-                ". \nGuerrier(s) rouge sur ce carreau : " + this.guerriersRouge.length +
-                ".\nLe combat est engagé ! \n");
+            ". \nGuerrier(s) rouge sur ce carreau : " + (this.guerriersRouge.length) +
+            ".\nLa bataille commence !!!!!!!!!!!!!! \n");
             let j = 0;
             let nbGuerriers = this.guerriersBleu.length + this.guerriersRouge.length;
             while (j !== nbGuerriers) {
@@ -31,7 +31,8 @@ class Carreau {
                             this.afficherCombat(this.guerriersBleu[i], guerrier);
                             if (guerrier.estMort()) {
                                 this.guerriersRouge.shift();
-                                chateauR.guerriersPrets = chateauR.guerriersPrets.filter(g => g !== guerrier);
+                                //faire retirer les guerriers morts
+                                chateauRouge.guerriersPrets = chateauRouge.guerriersPrets.filter(g => g !== guerrier);
                             }
                             j++;
                         }
@@ -45,7 +46,7 @@ class Carreau {
                             this.afficherCombat(this.guerriersRouge[i], guerrier);
                             if (guerrier.estMort()) {
                                 this.guerriersBleu.shift();
-                                chateauB.guerriersPrets = chateauB.guerriersPrets.filter(g => g !== guerrier);
+                                chateauBleu.guerriersPrets = chateauBleu.guerriersPrets.filter(g => g !== guerrier);
                             }
                             j++;
                         }
@@ -59,8 +60,8 @@ class Carreau {
     afficherCombat(guerrier1, guerrier2) {
         guerrier1.taper(guerrier2);
         console.log(guerrier1.getType() + " attaque " + guerrier2.getType());
-        console.log(guerrier2.getType() + " a " +guerrier2.getPointsDeVie()+"points de vie.");
-        console.log(guerrier1.getType() +" a "+ guerrier1.getPointsDeVie()+ "points de vie.\n");
+        console.log(guerrier2.getType() + " a " +guerrier2.getPointsDeVie()+" points de vie.");
+        console.log(guerrier1.getType() +" a "+ guerrier1.getPointsDeVie()+ " points de vie.\n");
     }
 
 

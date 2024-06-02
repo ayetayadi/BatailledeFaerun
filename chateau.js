@@ -16,15 +16,16 @@ class Chateau {
         while (ressources !== 0 && this.queueEntrainement.length !== 0) {
             let guerrier = this.queueEntrainement[0];
             if (guerrier.getCout() <= ressources) {
-                console.log("Il y'a " +ressources+" ressources et le guerrier " + guerrier.getType() + " a " + guerrier.getCout()+" cout d'entrainement.");
+                console.log("Il y'a " +ressources+" ressources et le guerrier " + guerrier.getType() + " qui a " + guerrier.getCout()+" cout d'entrainement est ajouté a la liste.");
+                //Ajout à la liste des guerriers
                 this.guerriersPrets.push(guerrier);
                 this.listeTemp.push(guerrier);
+                //retirer de la liste d'attente
                 this.queueEntrainement.shift();
                 this.ressources -= guerrier.getCout();
                 ressources = this.getRessources();
-                console.log("Ajout à la liste.");
             } else {
-                console.log("Ce guerrier "+guerrier.getType()+" de cout d'entrainement "+guerrier.getCout()+" reste a la liste d'attente pour des ressources "+ressources);
+                console.log("Ce guerrier "+guerrier.getType()+" de cout d'entrainement "+guerrier.getCout()+" reste dans la liste d'attente pour des ressources "+ressources);
                 ressources = 0;
             }
         }
@@ -55,6 +56,7 @@ class Chateau {
            }
        }*/
 
+       //Creer les guerriers et ajouter a la liste d'attente
     creerUnNain() {
         let nain = new Nain();
         this.queueEntrainement.push(nain);
@@ -85,7 +87,7 @@ class Chateau {
     }
 
 
-    afficherArmee() {
+    afficherGuerriersPrets() {
         let nbGuerriers = this.guerriersPrets.length;
         if (nbGuerriers !== 0) {
             console.log("Chateau " + this.getCamp() + " de nombre de guerriers : " + nbGuerriers + " sont au combat");
